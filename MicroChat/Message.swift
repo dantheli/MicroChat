@@ -13,9 +13,12 @@ class Message {
     var content: String
     
     init?(data: [AnyObject]) {
-        if let dict = data.first as? NSDictionary {
-            guard let message = dict["lol"] as? String else { return nil }
+        if let dict = data.first as? NSDictionary,
+            message = dict["lol"] as? String {
             content = message
+//        } else if let dict = data as? NSDictionary,
+//            message = dict["lol"] as? String {
+//            content = message
         } else {
             return nil
         }

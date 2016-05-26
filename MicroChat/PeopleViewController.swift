@@ -12,7 +12,7 @@ class PeopleViewController: UIViewController {
 
     var tableView: UITableView!
     
-    var people: [Person] = []
+    var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class PeopleViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.registerNib(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "PersonCell")
+        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         view.addSubview(tableView)
     }
@@ -40,11 +40,11 @@ extension PeopleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return people.count
+        return users.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PersonCell", forIndexPath: indexPath) as! PersonCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         return cell
     }
     

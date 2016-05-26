@@ -16,10 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let peopleViewController = PeopleViewController()
-        let navigationController = UINavigationController(rootViewController: peopleViewController)
+        let rootViewController: UIViewController
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.stringForKey("session_code") != nil {
+            let peopleViewController = PeopleViewController()
+            rootViewController = UINavigationController(rootViewController: peopleViewController)
+        } else {
+            let loginViewController = LoginViewController()
+            rootViewController = loginViewController
+        }
+        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
         
         return true

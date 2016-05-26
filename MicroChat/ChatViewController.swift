@@ -35,6 +35,8 @@ class ChatViewController: SLKTextViewController {
         super.viewDidLoad()
         
         tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50.0
         
         configureSocket()
         
@@ -46,16 +48,7 @@ class ChatViewController: SLKTextViewController {
         
         socket.on("chat") { data, ack in
             if let message = Message(data: data) {
-                let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-                let rowAnimation: UITableViewRowAnimation = self.inverted ? .Top : .Bottom
-                let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
-                
-                self.tableView.beginUpdates()
-                self.messages.insert(message, atIndex: 0)
-                self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
-                self.tableView.endUpdates()
-                
-                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: scrollPosition, animated: true)
+                self.addMessage(message)
             }
         }
         
@@ -63,6 +56,21 @@ class ChatViewController: SLKTextViewController {
         
         socket.connect()
 
+    }
+    
+    func addMessage(message: Message) {
+        dispatch_async(dispatch_get_main_queue()) {
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            let rowAnimation: UITableViewRowAnimation = self.inverted ? .Top : .Bottom
+            let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
+            
+            self.tableView.beginUpdates()
+            self.messages.insert(message, atIndex: 0)
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
+            self.tableView.endUpdates()
+            
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: scrollPosition, animated: true)
+        }
     }
     
     override func didPressRightButton(sender: AnyObject?) {
@@ -95,7 +103,7 @@ extension ChatViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
-        cell.textLabel?.text = messages[indexPath.row].content
+        cell.contentLabel.text = messages[indexPath.row].content
         
         cell.transform = tableView.transform
         

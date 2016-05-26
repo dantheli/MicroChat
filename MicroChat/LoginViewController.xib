@@ -17,8 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S">
-                    <rect key="frame" x="34" y="207" width="252" height="152"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S">
+                    <rect key="frame" x="34" y="208" width="252" height="152"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-bW-iLv">
                             <rect key="frame" x="18" y="8" width="216" height="30"/>
@@ -27,7 +27,7 @@
                                 <constraint firstAttribute="width" constant="216" id="TLw-Jj-naf"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-fL-n9c">
                             <rect key="frame" x="18" y="46" width="216" height="30"/>
@@ -36,7 +36,7 @@
                                 <constraint firstAttribute="width" constant="216" id="o1f-Oe-p56"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0f-XL-q6a">
                             <rect key="frame" x="107" y="84" width="38" height="30"/>
@@ -76,8 +76,8 @@
                         <constraint firstItem="r0f-XL-q6a" firstAttribute="top" secondItem="cO1-fL-n9c" secondAttribute="bottom" constant="8" id="xWx-Nu-PdC"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MicroChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-J8-drO">
-                    <rect key="frame" x="88" y="134" width="145" height="66"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MicroChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-J8-drO">
+                    <rect key="frame" x="96.5" y="134" width="128.5" height="66"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="66" id="dxs-Fh-ohj"/>
                     </constraints>
