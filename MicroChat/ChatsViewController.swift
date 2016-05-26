@@ -1,5 +1,5 @@
 //
-//  PeopleViewController.swift
+//  ChatsViewController.swift
 //  MicroChat
 //
 //  Created by Daniel Li on 5/25/16.
@@ -8,16 +8,18 @@
 
 import UIKit
 
-class PeopleViewController: UIViewController {
+class ChatsViewController: UIViewController {
 
     var tableView: UITableView!
     
-    var users: [User] = []
+    var chats: [Chat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "People"
+        title = "Chats"
+        let chat = Chat(name: "Test", users: [])
+        chats.append(chat)
         
         setupTableView()
     }
@@ -33,19 +35,26 @@ class PeopleViewController: UIViewController {
     }
 }
 
-extension PeopleViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return chats.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
+        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let chatViewController = ChatViewController()
+        chatViewController.chat = chats[indexPath.row]
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
     
 }

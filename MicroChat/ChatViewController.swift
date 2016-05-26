@@ -29,7 +29,7 @@ class ChatViewController: SLKTextViewController {
         }
     }
     
-    var messages: [Message] = []
+    var chat: Chat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class ChatViewController: SLKTextViewController {
         rightButton.setTitle("Send", forState: .Normal)
     }
     
-    func configureSocket() {
-        socket = SocketIOClient(socketURL: NSURL(string: "http://localhost:5000")!, options: [.Nsp("/test")])
+    private func configureSocket() {
+        socket = SocketIOClient(socketURL: NSURL(string: HostURL)!, options: [.Nsp("/test")])
         
         socket.on("chat") { data, ack in
             if let message = Message(data: data) {
@@ -58,14 +58,14 @@ class ChatViewController: SLKTextViewController {
 
     }
     
-    func addMessage(message: Message) {
+    private func addMessage(message: Message) {
         dispatch_async(dispatch_get_main_queue()) {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             let rowAnimation: UITableViewRowAnimation = self.inverted ? .Top : .Bottom
             let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
             
             self.tableView.beginUpdates()
-            self.messages.insert(message, atIndex: 0)
+            self.chat.messages.insert(message, atIndex: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
             self.tableView.endUpdates()
             
@@ -81,7 +81,7 @@ class ChatViewController: SLKTextViewController {
         let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
         
         self.tableView.beginUpdates()
-        self.messages.insert(Message(content: textView.text), atIndex: 0)
+        self.chat.messages.insert(Message(content: textView.text), atIndex: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
         self.tableView.endUpdates()
         
@@ -98,12 +98,12 @@ extension ChatViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return chat.messages.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
-        cell.contentLabel.text = messages[indexPath.row].content
+        cell.contentLabel.text = chat.messages[indexPath.row].content
         
         cell.transform = tableView.transform
         

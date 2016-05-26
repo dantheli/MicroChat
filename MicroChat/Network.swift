@@ -10,23 +10,23 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+let HostURL = "http://10.148.4.108:5000"
+
 enum Router: URLStringConvertible {
     
     case SignIn
     case SignUp
     
-    static let BackendHostURL =     "http://10.148.4.108:5000/mchat"
-    
     var URLString: String {
         let path: String = {
             switch self {
             case .SignIn:
-                return "/users/sign_in"
+                return "/mchat/users/sign_in"
             case .SignUp:
-                return "/users/sign_up"
+                return "/mchat/users/sign_up"
             }
         }()
-        return Router.BackendHostURL + path
+        return HostURL + path
     }
 }
 

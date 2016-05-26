@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func presentMainApplication() {
-        let peopleViewController = PeopleViewController()
-        window?.rootViewController = UINavigationController(rootViewController: peopleViewController)
+        let chatsViewController = ChatsViewController()
+        window?.rootViewController = UINavigationController(rootViewController: chatsViewController)
         window?.makeKeyAndVisible()
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Message {
     
@@ -22,6 +23,10 @@ class Message {
         } else {
             return nil
         }
+    }
+    
+    init?(json: JSON) {
+        fatalError("init(json:) not implemented")
     }
     
     init(content: String) {
