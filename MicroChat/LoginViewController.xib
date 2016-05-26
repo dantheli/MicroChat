@@ -7,8 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="MicroChat" customModuleProvider="target">
             <connections>
+                <outlet property="emailField" destination="vOs-bW-iLv" id="WSc-gC-SJ3"/>
+                <outlet property="enterButton" destination="r0f-XL-q6a" id="f6f-OS-hc7"/>
+                <outlet property="nameField" destination="tfo-OZ-KOH" id="UoF-bM-ZM3"/>
+                <outlet property="nameFieldHeight" destination="oPY-46-pZk" id="Dtk-Mv-bkh"/>
                 <outlet property="passwordField" destination="cO1-fL-n9c" id="8cn-1r-hta"/>
-                <outlet property="usernameField" destination="vOs-bW-iLv" id="3nK-DW-uaw"/>
+                <outlet property="switchButton" destination="RLC-36-q5H" id="0IZ-wG-ZFk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,83 +21,100 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S">
-                    <rect key="frame" x="34" y="208" width="252" height="152"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S" userLabel="Fields Container">
+                    <rect key="frame" x="0.0" y="96" width="320" height="136"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-bW-iLv">
-                            <rect key="frame" x="18" y="8" width="216" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-fL-n9c">
+                            <rect key="frame" x="16" y="91" width="288" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="9yo-5i-hPJ"/>
-                                <constraint firstAttribute="width" constant="216" id="TLw-Jj-naf"/>
+                                <constraint firstAttribute="height" constant="44" id="Yh9-2t-V9H"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-fL-n9c">
-                            <rect key="frame" x="18" y="46" width="216" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Yh9-2t-V9H"/>
-                                <constraint firstAttribute="width" constant="216" id="o1f-Oe-p56"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0f-XL-q6a">
-                            <rect key="frame" x="107" y="84" width="38" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfo-OZ-KOH">
+                            <rect key="frame" x="16" y="1" width="288" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="R6a-zQ-hqz"/>
+                                <constraint firstAttribute="height" constant="44" id="oPY-46-pZk"/>
                             </constraints>
-                            <state key="normal" title="Login"/>
-                            <connections>
-                                <action selector="loginButton:" destination="-1" eventType="touchUpInside" id="8ea-hf-gyW"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-36-q5H">
-                            <rect key="frame" x="97" y="118" width="57" height="30"/>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-bW-iLv">
+                            <rect key="frame" x="16" y="46" width="288" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="bin-l9-ZzC"/>
+                                <constraint firstAttribute="height" constant="44" id="9yo-5i-hPJ"/>
                             </constraints>
-                            <state key="normal" title="Register"/>
-                            <connections>
-                                <action selector="registerButton:" destination="-1" eventType="touchUpInside" id="ikR-WQ-UkK"/>
-                            </connections>
-                        </button>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                        </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.52609977900000005" green="0.31565514620000001" blue="1" alpha="0.15076462765957446" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="RLC-36-q5H" firstAttribute="top" secondItem="r0f-XL-q6a" secondAttribute="bottom" constant="4" id="Bbr-02-loU"/>
-                        <constraint firstAttribute="trailing" secondItem="cO1-fL-n9c" secondAttribute="trailing" constant="18" id="Fhc-3r-rx2"/>
+                        <constraint firstItem="vOs-bW-iLv" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="3Do-pN-QFd"/>
+                        <constraint firstAttribute="trailing" secondItem="cO1-fL-n9c" secondAttribute="trailing" constant="16" id="4Km-gc-fLm"/>
                         <constraint firstItem="vOs-bW-iLv" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="J6o-gp-jrL"/>
-                        <constraint firstItem="vOs-bW-iLv" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="18" id="LFs-2I-auf"/>
-                        <constraint firstItem="cO1-fL-n9c" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="18" id="NTy-g1-aGD"/>
-                        <constraint firstAttribute="trailing" secondItem="vOs-bW-iLv" secondAttribute="trailing" constant="18" id="UP7-Lx-4wo"/>
-                        <constraint firstItem="RLC-36-q5H" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="ivQ-vO-O7U"/>
-                        <constraint firstItem="vOs-bW-iLv" firstAttribute="top" secondItem="02V-uC-E8S" secondAttribute="top" constant="8" id="mTy-Qo-4jC"/>
-                        <constraint firstItem="r0f-XL-q6a" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="s4M-p7-iBP"/>
+                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="LOe-80-M7C"/>
+                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="Lkd-hQ-DxB"/>
+                        <constraint firstAttribute="bottom" secondItem="cO1-fL-n9c" secondAttribute="bottom" constant="1" id="OKu-jh-DuX"/>
+                        <constraint firstAttribute="trailing" secondItem="vOs-bW-iLv" secondAttribute="trailing" constant="16" id="R2e-VQ-Lfq"/>
+                        <constraint firstAttribute="trailing" secondItem="tfo-OZ-KOH" secondAttribute="trailing" constant="16" id="h0P-3a-EV4"/>
+                        <constraint firstItem="vOs-bW-iLv" firstAttribute="top" secondItem="tfo-OZ-KOH" secondAttribute="bottom" constant="1" id="ibJ-N9-EcI"/>
+                        <constraint firstItem="cO1-fL-n9c" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="mUR-En-ABS"/>
                         <constraint firstItem="cO1-fL-n9c" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="tkW-VN-EDr"/>
-                        <constraint firstItem="cO1-fL-n9c" firstAttribute="top" secondItem="vOs-bW-iLv" secondAttribute="bottom" constant="8" id="u2O-1u-STL"/>
-                        <constraint firstAttribute="bottom" secondItem="RLC-36-q5H" secondAttribute="bottom" constant="4" id="x6E-LE-M2X"/>
-                        <constraint firstItem="r0f-XL-q6a" firstAttribute="top" secondItem="cO1-fL-n9c" secondAttribute="bottom" constant="8" id="xWx-Nu-PdC"/>
+                        <constraint firstItem="cO1-fL-n9c" firstAttribute="top" secondItem="vOs-bW-iLv" secondAttribute="bottom" constant="1" id="u2O-1u-STL"/>
+                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="top" secondItem="02V-uC-E8S" secondAttribute="top" constant="1" id="x3Y-Yf-Tcn"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MicroChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-J8-drO">
-                    <rect key="frame" x="96.5" y="134" width="128.5" height="66"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MICRO_CHAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-J8-drO">
+                    <rect key="frame" x="76" y="30" width="169" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="66" id="dxs-Fh-ohj"/>
+                        <constraint firstAttribute="height" constant="44" id="dxs-Fh-ohj"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="28"/>
+                    <color key="textColor" red="0.52609977900000005" green="0.31565514620000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0f-XL-q6a">
+                    <rect key="frame" x="123" y="248" width="74" height="44"/>
+                    <color key="backgroundColor" red="0.52609977902617922" green="0.31565514615638712" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="R6a-zQ-hqz"/>
+                        <constraint firstAttribute="width" constant="74" id="WuI-fo-Wpl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Enter"/>
+                    <connections>
+                        <action selector="enterButtonPressed:" destination="-1" eventType="touchUpInside" id="2iH-Yo-d0F"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-36-q5H">
+                    <rect key="frame" x="0.0" y="308" width="320" height="30"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                    <color key="tintColor" red="0.52609977900000005" green="0.31565514620000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="switch"/>
+                    <connections>
+                        <action selector="switchButtonPressed:" destination="-1" eventType="touchUpInside" id="kfo-85-N4w"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="02V-uC-E8S" firstAttribute="top" secondItem="zAM-J8-drO" secondAttribute="bottom" constant="8" id="Od4-vu-HAz"/>
-                <constraint firstItem="02V-uC-E8S" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="iIM-Pc-eDe"/>
+                <constraint firstItem="02V-uC-E8S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4ho-f4-3GW"/>
+                <constraint firstItem="zAM-J8-drO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="7ob-01-EGq"/>
+                <constraint firstItem="02V-uC-E8S" firstAttribute="top" secondItem="zAM-J8-drO" secondAttribute="bottom" constant="22" id="Od4-vu-HAz"/>
+                <constraint firstItem="r0f-XL-q6a" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Qly-ig-Jgn"/>
+                <constraint firstItem="r0f-XL-q6a" firstAttribute="top" secondItem="02V-uC-E8S" secondAttribute="bottom" constant="16" id="UBk-il-fys"/>
+                <constraint firstItem="RLC-36-q5H" firstAttribute="top" secondItem="r0f-XL-q6a" secondAttribute="bottom" constant="16" id="ZA2-0N-9ck"/>
+                <constraint firstAttribute="trailing" secondItem="02V-uC-E8S" secondAttribute="trailing" id="f25-Qz-Dec"/>
                 <constraint firstItem="02V-uC-E8S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iKk-Wt-W31"/>
+                <constraint firstAttribute="trailing" secondItem="RLC-36-q5H" secondAttribute="trailing" id="oXc-Xc-3bK"/>
+                <constraint firstItem="RLC-36-q5H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="odX-JH-xfE"/>
                 <constraint firstItem="zAM-J8-drO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qlo-dt-RaB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="353" y="363"/>
         </view>
     </objects>
 </document>

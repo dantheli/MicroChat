@@ -8,6 +8,14 @@
 
 import Foundation
 
+
+// MARK: - Animations
+
 let UIViewFadeDuration: NSTimeInterval = 0.55
 let UITableViewCellFadeDuration: NSTimeInterval = 0.55
 let UITableViewCellFadeDelay: NSTimeInterval = 0.1
+
+// MARK: - Notifications
+let UserDidSignInNotification = "UserDidSignIn"
+let UserDidSignUpNotification = "UserDidSignUp"
+let UserDidSignOutNotification = "UserDidSignOut"

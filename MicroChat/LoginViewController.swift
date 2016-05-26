@@ -10,37 +10,49 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    @IBAction func loginButton(sender: UIButton) {
-        
+    @IBOutlet weak var enterButton: UIButton!
+    @IBAction func enterButtonPressed(sender: UIButton) {
+        if signUp {
+            Network.signUp(nameField.text!, email: emailField.text!, password: passwordField.text!) { error in
+                if let error = error { self.displayError(error, completion: nil); return }
+                NSNotificationCenter.defaultCenter().postNotificationName(UserDidSignUpNotification, object: nil)
+            }
+        } else {
+            Network.signIn(emailField.text ?? "", password: passwordField.text ?? "") { error in
+                if let error = error { self.displayError(error, completion: nil); return }
+                NSNotificationCenter.defaultCenter().postNotificationName(UserDidSignInNotification, object: nil)
+            }
+        }
     }
     
-    @IBAction func registerButton(sender: UIButton) {
-        
+    @IBOutlet weak var switchButton: UIButton!
+    @IBAction func switchButtonPressed(sender: UIButton) {
+        signUp = !signUp
     }
     
+    var signUp: Bool = false {
+        didSet {
+            enterButton.setTitle(signUp ? "sign up" : "sign in", forState: .Normal)
+            switchButton.setTitle(signUp ? "already a user? sign in here." : "new user? sign up here.", forState: .Normal)
+            
+            signUp ? nameField.fadeShow() : nameField.fadeHide()
+            nameFieldHeight.constant = signUp ? 44.0 : 0.0
+            UIView.animateWithDuration(UIViewFadeDuration) {
+                self.view.layoutSubviews()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        signUp = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

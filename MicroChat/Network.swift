@@ -15,7 +15,7 @@ enum Router: URLStringConvertible {
     case SignIn
     case SignUp
     
-    static let BackendHostURL =     "http://localhost/mchat"
+    static let BackendHostURL =     "http://10.148.4.108/mchat"
     
     var URLString: String {
         let path: String = {
@@ -50,9 +50,9 @@ let Defaults = NSUserDefaults.standardUserDefaults()
 
 class Network {
     
-    static var SessionCode: String? {
+    private static var SessionCode: String? {
         get {
-            Defaults.stringForKey("SessionCode")
+            return Defaults.stringForKey("SessionCode")
         }
         set {
             Defaults.setObject(newValue, forKey: "SessionCode")
@@ -84,7 +84,12 @@ class Network {
     }
     
     static func signOut(completion: (error: NSError?) -> Void) {
-        let headers = [HeaderKey.SessionCode : SessionCode]
+        guard let sessionCode = SessionCode else {
+            completion(error: nil)
+            print("***WARNING*** User was already signed out it seems. No session code was present.")
+            return
+        }
+        let headers = [HeaderKey.SessionCode : sessionCode]
         request(.POST, headers: headers, router: .SignIn) { data, error in
             if error == nil {
                 SessionCode = nil
@@ -101,6 +106,8 @@ class Network {
                 print()
                 print("URL: " + router.URLString)
                 print()
+                print("HEADERS: \(headers)")
+                print()
                 print("PARAMETERS: \(params)")
                 if let error = response.result.error {
                     print()
@@ -116,10 +123,10 @@ class Network {
                 print()
                 print(json)
                 
-                if json[APIKey.Success].bool! {
-                    completion(data: json[APIKey.Data], error: nil)
+                if json[ParameterKey.Success].bool! {
+                    completion(data: json[ParameterKey.Data], error: nil)
                 } else {
-                    let error = json[APIKey.Data][APIKey.Errors].array?.first?.string
+                    let error = json[ParameterKey.Data][ParameterKey.Errors].array?.first?.string
                     completion(data: nil, error: NSError(domain: "MicroChatDomain", code: -999999, userInfo: [kCFErrorLocalizedDescriptionKey : error ?? "Unknown Error"]))
                 }
         }
