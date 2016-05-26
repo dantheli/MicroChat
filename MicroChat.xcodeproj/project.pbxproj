@@ -8,23 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		654458991CF5367400CA5F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654458981CF5367400CA5F4C /* AppDelegate.swift */; };
-		6544589B1CF5367400CA5F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544589A1CF5367400CA5F4C /* ViewController.swift */; };
+		6544589B1CF5367400CA5F4C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544589A1CF5367400CA5F4C /* ChatViewController.swift */; };
 		654458A01CF5367400CA5F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6544589F1CF5367400CA5F4C /* Assets.xcassets */; };
 		654458A31CF5367400CA5F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654458A11CF5367400CA5F4C /* LaunchScreen.storyboard */; };
-		65F83E961CF62869002DAB09 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F83E951CF62869002DAB09 /* MessageCell.swift */; };
+		659D45BB1CF6A46E0032C3C9 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BA1CF6A46E0032C3C9 /* PeopleViewController.swift */; };
+		659D45BE1CF6A5C00032C3C9 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BC1CF6A5C00032C3C9 /* PersonCell.swift */; };
+		659D45BF1CF6A5C00032C3C9 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D45BD1CF6A5C00032C3C9 /* PersonCell.xib */; };
+		659D45C21CF6A5EF0032C3C9 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45C01CF6A5EF0032C3C9 /* MessageCell.swift */; };
+		659D45C31CF6A5EF0032C3C9 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D45C11CF6A5EF0032C3C9 /* MessageCell.xib */; };
+		659D45C71CF6A63B0032C3C9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45C61CF6A63B0032C3C9 /* Person.swift */; };
+		659D45C91CF6A6410032C3C9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45C81CF6A6410032C3C9 /* Message.swift */; };
+		659D45CF1CF6B82C0032C3C9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45CD1CF6B82C0032C3C9 /* LoginViewController.swift */; };
+		659D45D01CF6B82C0032C3C9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D45CE1CF6B82C0032C3C9 /* LoginViewController.xib */; };
 		D7739B53C4762966F89CD160 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F6B4FE4D865511151924E0B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E772C65EF55A5EF1F4B781F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F6B4FE4D865511151924E0B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		654458951CF5367300CA5F4C /* SocketChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		654458951CF5367300CA5F4C /* MicroChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		654458981CF5367400CA5F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6544589A1CF5367400CA5F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6544589A1CF5367400CA5F4C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6544589F1CF5367400CA5F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		654458A21CF5367400CA5F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		654458A41CF5367400CA5F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65F83E951CF62869002DAB09 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		659D45BA1CF6A46E0032C3C9 /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		659D45BC1CF6A5C00032C3C9 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		659D45BD1CF6A5C00032C3C9 /* PersonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCell.xib; sourceTree = "<group>"; };
+		659D45C01CF6A5EF0032C3C9 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		659D45C11CF6A5EF0032C3C9 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		659D45C61CF6A63B0032C3C9 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		659D45C81CF6A6410032C3C9 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		659D45CD1CF6B82C0032C3C9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		659D45CE1CF6B82C0032C3C9 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		DE317F566AB0436F51F713A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,7 +59,7 @@
 		6544588C1CF5367300CA5F4C = {
 			isa = PBXGroup;
 			children = (
-				654458971CF5367400CA5F4C /* SocketChat */,
+				654458971CF5367400CA5F4C /* MicroChat */,
 				654458961CF5367300CA5F4C /* Products */,
 				F6B620FFFE22685B7F470221 /* Pods */,
 				FF0FC7ACB6F74B340ABDF568 /* Frameworks */,
@@ -53,22 +69,62 @@
 		654458961CF5367300CA5F4C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				654458951CF5367300CA5F4C /* SocketChat.app */,
+				654458951CF5367300CA5F4C /* MicroChat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		654458971CF5367400CA5F4C /* SocketChat */ = {
+		654458971CF5367400CA5F4C /* MicroChat */ = {
 			isa = PBXGroup;
 			children = (
 				654458981CF5367400CA5F4C /* AppDelegate.swift */,
-				6544589A1CF5367400CA5F4C /* ViewController.swift */,
-				65F83E951CF62869002DAB09 /* MessageCell.swift */,
+				659D45CC1CF6B7F10032C3C9 /* Controllers */,
+				659D45C41CF6A5F40032C3C9 /* Cells */,
+				659D45C51CF6A62F0032C3C9 /* Model */,
+				659D45D11CF6BAB80032C3C9 /* Networking */,
 				6544589F1CF5367400CA5F4C /* Assets.xcassets */,
 				654458A11CF5367400CA5F4C /* LaunchScreen.storyboard */,
 				654458A41CF5367400CA5F4C /* Info.plist */,
 			);
-			path = SocketChat;
+			path = MicroChat;
+			sourceTree = "<group>";
+		};
+		659D45C41CF6A5F40032C3C9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				659D45C01CF6A5EF0032C3C9 /* MessageCell.swift */,
+				659D45C11CF6A5EF0032C3C9 /* MessageCell.xib */,
+				659D45BC1CF6A5C00032C3C9 /* PersonCell.swift */,
+				659D45BD1CF6A5C00032C3C9 /* PersonCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		659D45C51CF6A62F0032C3C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				659D45C61CF6A63B0032C3C9 /* Person.swift */,
+				659D45C81CF6A6410032C3C9 /* Message.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		659D45CC1CF6B7F10032C3C9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				659D45CD1CF6B82C0032C3C9 /* LoginViewController.swift */,
+				659D45CE1CF6B82C0032C3C9 /* LoginViewController.xib */,
+				659D45BA1CF6A46E0032C3C9 /* PeopleViewController.swift */,
+				6544589A1CF5367400CA5F4C /* ChatViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		659D45D11CF6BAB80032C3C9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		F6B620FFFE22685B7F470221 /* Pods */ = {
@@ -91,9 +147,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		654458941CF5367300CA5F4C /* SocketChat */ = {
+		654458941CF5367300CA5F4C /* MicroChat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 654458A71CF5367400CA5F4C /* Build configuration list for PBXNativeTarget "SocketChat" */;
+			buildConfigurationList = 654458A71CF5367400CA5F4C /* Build configuration list for PBXNativeTarget "MicroChat" */;
 			buildPhases = (
 				20228C2B9B51CBE84C78B42C /* Check Pods Manifest.lock */,
 				654458911CF5367300CA5F4C /* Sources */,
@@ -106,9 +162,9 @@
 			);
 			dependencies = (
 			);
-			name = SocketChat;
+			name = MicroChat;
 			productName = SocketChat;
-			productReference = 654458951CF5367300CA5F4C /* SocketChat.app */;
+			productReference = 654458951CF5367300CA5F4C /* MicroChat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +182,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 654458901CF5367300CA5F4C /* Build configuration list for PBXProject "SocketChat" */;
+			buildConfigurationList = 654458901CF5367300CA5F4C /* Build configuration list for PBXProject "MicroChat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -139,7 +195,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				654458941CF5367300CA5F4C /* SocketChat */,
+				654458941CF5367300CA5F4C /* MicroChat */,
 			);
 		};
 /* End PBXProject section */
@@ -149,8 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659D45D01CF6B82C0032C3C9 /* LoginViewController.xib in Resources */,
 				654458A31CF5367400CA5F4C /* LaunchScreen.storyboard in Resources */,
+				659D45C31CF6A5EF0032C3C9 /* MessageCell.xib in Resources */,
 				654458A01CF5367400CA5F4C /* Assets.xcassets in Resources */,
+				659D45BF1CF6A5C00032C3C9 /* PersonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,9 +268,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6544589B1CF5367400CA5F4C /* ViewController.swift in Sources */,
+				659D45C71CF6A63B0032C3C9 /* Person.swift in Sources */,
+				6544589B1CF5367400CA5F4C /* ChatViewController.swift in Sources */,
+				659D45C21CF6A5EF0032C3C9 /* MessageCell.swift in Sources */,
+				659D45BE1CF6A5C00032C3C9 /* PersonCell.swift in Sources */,
+				659D45CF1CF6B82C0032C3C9 /* LoginViewController.swift in Sources */,
+				659D45BB1CF6A46E0032C3C9 /* PeopleViewController.swift in Sources */,
 				654458991CF5367400CA5F4C /* AppDelegate.swift in Sources */,
-				65F83E961CF62869002DAB09 /* MessageCell.swift in Sources */,
+				659D45C91CF6A6410032C3C9 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,8 +383,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SocketChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.SocketChat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.microchat;
+				PRODUCT_NAME = MicroChat;
 			};
 			name = Debug;
 		};
@@ -331,15 +395,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SocketChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.SocketChat;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.microchat;
+				PRODUCT_NAME = MicroChat;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		654458901CF5367300CA5F4C /* Build configuration list for PBXProject "SocketChat" */ = {
+		654458901CF5367300CA5F4C /* Build configuration list for PBXProject "MicroChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				654458A51CF5367400CA5F4C /* Debug */,
@@ -348,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		654458A71CF5367400CA5F4C /* Build configuration list for PBXNativeTarget "SocketChat" */ = {
+		654458A71CF5367400CA5F4C /* Build configuration list for PBXNativeTarget "MicroChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				654458A81CF5367400CA5F4C /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SocketChat
+//  MicroChat
 //
 //  Created by Daniel Li on 5/24/16.
 //  Copyright © 2016 dantheli. All rights reserved.
@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let viewcontroller = ViewController()
+        let peopleViewController = PeopleViewController()
+        let navigationController = UINavigationController(rootViewController: peopleViewController)
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = viewcontroller
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

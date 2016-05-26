@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  SocketChat
+//  MicroChat
 //
 //  Created by Daniel Li on 5/24/16.
 //  Copyright © 2016 dantheli. All rights reserved.
@@ -11,7 +11,7 @@ import SocketIOClientSwift
 import SwiftyJSON
 import SlackTextViewController
 
-class ViewController: SLKTextViewController {
+class ChatViewController: SLKTextViewController {
     
     init() {
         super.init(tableViewStyle: .Plain)
@@ -29,21 +29,25 @@ class ViewController: SLKTextViewController {
         }
     }
     
-    var messages: [String] = []
+    var messages: [Message] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(MessageCell.self, forCellReuseIdentifier: "MessageCell")
+        tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
         
+        configureSocket()
+        
+        rightButton.setTitle("Send", forState: .Normal)
+    }
+    
+    func configureSocket() {
         socket = SocketIOClient(socketURL: NSURL(string: "http://localhost:5000")!, options: [.Nsp("/test")])
         
         socket.on("chat") { data, ack in
-            if let dict = data.first as? NSDictionary,
-                message = dict["lol"] as? String {
-                
+            if let message = Message(data: data) {
                 let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-                let rowAnimation: UITableViewRowAnimation = self.inverted ? .Bottom : .Top
+                let rowAnimation: UITableViewRowAnimation = self.inverted ? .Top : .Bottom
                 let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
                 
                 self.tableView.beginUpdates()
@@ -58,8 +62,7 @@ class ViewController: SLKTextViewController {
         socket.onAny { print("Got event: " + $0.event) }
         
         socket.connect()
-        
-        rightButton.setTitle("Send", forState: .Normal)
+
     }
     
     override func didPressRightButton(sender: AnyObject?) {
@@ -70,7 +73,7 @@ class ViewController: SLKTextViewController {
         let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
         
         self.tableView.beginUpdates()
-        self.messages.insert(textView.text, atIndex: 0)
+        self.messages.insert(Message(content: textView.text), atIndex: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
         self.tableView.endUpdates()
         
@@ -80,7 +83,7 @@ class ViewController: SLKTextViewController {
     }
 }
 
-extension ViewController {
+extension ChatViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -92,7 +95,7 @@ extension ViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
-        cell.textLabel?.text = messages[indexPath.row]
+        cell.textLabel?.text = messages[indexPath.row].content
         
         cell.transform = tableView.transform
         
