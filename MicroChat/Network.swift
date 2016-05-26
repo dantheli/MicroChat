@@ -15,7 +15,7 @@ enum Router: URLStringConvertible {
     case SignIn
     case SignUp
     
-    static let BackendHostURL =     "http://10.148.4.108/mchat"
+    static let BackendHostURL =     "http://10.148.4.108:5000/mchat"
     
     var URLString: String {
         let path: String = {
@@ -34,6 +34,9 @@ struct ParameterKey {
     static let Success      = "success"
     static let Data         = "data"
     static let Errors       = "errors"
+    
+    static let Session      = "session"
+    static let SessionCode  = "session_code"
     
     static let Name         = "name"
     static let Email        = "email"
@@ -66,9 +69,6 @@ class Network {
             ParameterKey.Password : password
         ]
         request(.POST, params: params, router: .SignUp) { data, error in
-            if error == nil {
-                print("Data: \(data)")
-            }
             completion(error: error)
         }
     }
@@ -77,7 +77,7 @@ class Network {
         let headers = [HeaderKey.Email : email, HeaderKey.Password : password]
         request(.POST, headers: headers, router: .SignIn) { data, error in
             if error == nil {
-                print("Data: \(data)")
+                SessionCode = data![ParameterKey.Session][ParameterKey.SessionCode].string!
             }
             completion(error: error)
         }
@@ -99,10 +99,10 @@ class Network {
     }
     
     private static func request(method: Alamofire.Method, headers: [String : String] = [:], params: [String : AnyObject] = [:], router: Router, completion: (data: JSON?, error: NSError?) -> Void) {
-        Alamofire.request(method, router, parameters: params, headers: headers)
+        Alamofire.request(method, router, parameters: params, encoding: .JSON, headers: headers)
             .responseJSON { response in
                 print()
-                print("**************************************** NEW REQUEST *************************************")
+                print("**************************************** NEW \(method) REQUEST *************************************")
                 print()
                 print("URL: " + router.URLString)
                 print()

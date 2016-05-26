@@ -16,22 +16,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let rootViewController: UIViewController
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if defaults.stringForKey("session_code") != nil {
-            let peopleViewController = PeopleViewController()
-            rootViewController = UINavigationController(rootViewController: peopleViewController)
+        if defaults.stringForKey("SessionCode") != nil {
+            presentMainApplication()
         } else {
-            let loginViewController = LoginViewController()
-            rootViewController = loginViewController
+            window?.rootViewController = LoginViewController()
+            window?.makeKeyAndVisible()
         }
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = rootViewController
-        window?.makeKeyAndVisible()
+        
+        
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(userDidSignIn), name: UserDidSignInNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(userDidSignUp), name: UserDidSignUpNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(userDidSignOut), name: UserDidSignOutNotification, object: nil)
         
         return true
+    }
+    
+    func presentMainApplication() {
+        let peopleViewController = PeopleViewController()
+        window?.rootViewController = UINavigationController(rootViewController: peopleViewController)
+        window?.makeKeyAndVisible()
+    }
+    
+    func userDidSignIn() {
+        presentMainApplication()
+    }
+    
+    func userDidSignUp() {
+        presentMainApplication()
+    }
+    
+    func userDidSignOut() {
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
