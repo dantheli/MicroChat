@@ -12,8 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -25,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = LoginViewController()
             window?.makeKeyAndVisible()
         }
-        
-        
-        
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(userDidSignIn), name: UserDidSignInNotification, object: nil)
@@ -52,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidSignOut() {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
     }
 

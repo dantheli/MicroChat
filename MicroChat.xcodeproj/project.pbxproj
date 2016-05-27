@@ -17,6 +17,7 @@
 		658C50E61CF77F0F00336DF4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50E51CF77F0F00336DF4 /* Constants.swift */; };
 		658C50E81CF77F7300336DF4 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50E71CF77F7300336DF4 /* ColorScheme.swift */; };
 		658C50EB1CF79FE200336DF4 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50EA1CF79FE200336DF4 /* Chat.swift */; };
+		658C50ED1CF7D0F500336DF4 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50EC1CF7D0F500336DF4 /* NewChatViewController.swift */; };
 		659D45BB1CF6A46E0032C3C9 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */; };
 		659D45BE1CF6A5C00032C3C9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BC1CF6A5C00032C3C9 /* UserCell.swift */; };
 		659D45BF1CF6A5C00032C3C9 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D45BD1CF6A5C00032C3C9 /* UserCell.xib */; };
@@ -41,6 +42,7 @@
 		658C50E51CF77F0F00336DF4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		658C50E71CF77F7300336DF4 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		658C50EA1CF79FE200336DF4 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		658C50EC1CF7D0F500336DF4 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		659D45BC1CF6A5C00032C3C9 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		659D45BD1CF6A5C00032C3C9 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -89,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				658C50E91CF7810900336DF4 /* Application */,
-				659D45C41CF6A5F40032C3C9 /* Cells */,
 				659D45CC1CF6B7F10032C3C9 /* Controllers */,
+				659D45C41CF6A5F40032C3C9 /* Cells */,
 				659D45C51CF6A62F0032C3C9 /* Model */,
 				659D45D11CF6BAB80032C3C9 /* Networking */,
 				658C50E41CF77EF500336DF4 /* Supporting Files */,
@@ -143,10 +145,11 @@
 		659D45CC1CF6B7F10032C3C9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6544589A1CF5367400CA5F4C /* ChatViewController.swift */,
-				659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */,
 				659D45CD1CF6B82C0032C3C9 /* LoginViewController.swift */,
 				659D45CE1CF6B82C0032C3C9 /* LoginViewController.xib */,
+				659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */,
+				6544589A1CF5367400CA5F4C /* ChatViewController.swift */,
+				658C50EC1CF7D0F500336DF4 /* NewChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +216,11 @@
 					654458941CF5367300CA5F4C = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RNCTC44528;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -309,6 +317,7 @@
 				6544589B1CF5367400CA5F4C /* ChatViewController.swift in Sources */,
 				658C50E81CF77F7300336DF4 /* ColorScheme.swift in Sources */,
 				659D45C21CF6A5EF0032C3C9 /* MessageCell.swift in Sources */,
+				658C50ED1CF7D0F500336DF4 /* NewChatViewController.swift in Sources */,
 				659D45BE1CF6A5C00032C3C9 /* UserCell.swift in Sources */,
 				659D45CF1CF6B82C0032C3C9 /* LoginViewController.swift in Sources */,
 				658C50BD1CF774F300336DF4 /* Network.swift in Sources */,

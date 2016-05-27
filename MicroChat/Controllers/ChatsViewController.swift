@@ -22,16 +22,26 @@ class ChatsViewController: UIViewController {
         chats.append(chat)
         
         setupTableView()
+        setupBarButtons()
     }
     
     func setupTableView() {
         tableView = UITableView(frame: view.frame, style: .Plain)
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         view.addSubview(tableView)
+    }
+    
+    func setupBarButtons() {
+        let newChatButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(newChatButtonPressed))
+        navigationItem.rightBarButtonItem = newChatButton
+    }
+    
+    func newChatButtonPressed() {
+        let navigationController = UINavigationController(rootViewController: NewChatViewController())
+        presentViewController(navigationController, animated: true, completion: nil)
     }
 }
 

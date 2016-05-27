@@ -1,21 +1,24 @@
 PODS:
   - Alamofire (3.4.0)
+  - OneSignal (1.13.2)
   - SlackTextViewController (1.9.3)
   - Socket.IO-Client-Swift (6.1.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
+  - OneSignal
   - SlackTextViewController
   - Socket.IO-Client-Swift (~> 6.1.2)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  OneSignal: 15b94fa760a6754908f11ef92da6ec945923fa2c
   SlackTextViewController: bd2a34c188d4f7dec93cf42388f38551263fac82
   Socket.IO-Client-Swift: 60a60e8bfd7b16bc57c90ff6329e9f536b5eacdd
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 3074de313830b6e5f88fbfcd05405676a8670dfb
+PODFILE CHECKSUM: dbf2fda238ca3758281c5f3d48bf3378f3116318
 
 COCOAPODS: 1.0.0

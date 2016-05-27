@@ -34,16 +34,33 @@ class ChatViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 50.0
+        title = chat.name ?? "Chat with \(chat.users.first!.name)"
         
+        view.backgroundColor = UIColor.lightGrayColor()
+        
+        configureTableView()
         configureSocket()
         
         rightButton.setTitle("Send", forState: .Normal)
+        textInputbar.tintColor = UIColor.purpleColor()
+        textInputbar.translucent = false
+        textView.placeholder = "Message"
     }
     
-    private func configureSocket() {
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        chat.messages.removeAll()
+        socket.removeAllHandlers()
+    }
+    
+    func configureTableView() {
+        tableView.registerNib(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "MessageCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50.0
+        tableView.separatorStyle = .None
+    }
+    
+    func configureSocket() {
         socket = SocketIOClient(socketURL: NSURL(string: HostURL)!, options: [.Nsp("/test")])
         
         socket.on("chat") { data, ack in
@@ -52,13 +69,10 @@ class ChatViewController: SLKTextViewController {
             }
         }
         
-        socket.onAny { print("Got event: " + $0.event + "; with data: \($0.items)") }
-        
         socket.connect()
-
     }
     
-    private func addMessage(message: Message) {
+    func addMessage(message: Message) {
         dispatch_async(dispatch_get_main_queue()) {
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             let rowAnimation: UITableViewRowAnimation = self.inverted ? .Top : .Bottom

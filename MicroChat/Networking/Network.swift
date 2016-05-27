@@ -16,6 +16,7 @@ enum Router: URLStringConvertible {
     
     case SignIn
     case SignUp
+    case FetchUsers
     
     var URLString: String {
         let path: String = {
@@ -24,6 +25,8 @@ enum Router: URLStringConvertible {
                 return "/mchat/users/sign_in"
             case .SignUp:
                 return "/mchat/users/sign_up"
+            case .FetchUsers:
+                return "/mchat/users/index"
             }
         }()
         return HostURL + path
@@ -41,6 +44,8 @@ struct ParameterKey {
     static let Name         = "name"
     static let Email        = "email"
     static let Password     = "password"
+    
+    static let Users        = "users"
 }
 
 struct HeaderKey {
@@ -52,6 +57,8 @@ struct HeaderKey {
 let Defaults = NSUserDefaults.standardUserDefaults()
 
 class Network {
+    
+    // MARK: - Authorization/Authentication
     
     private static var SessionCode: String? {
         get {
@@ -68,14 +75,14 @@ class Network {
             ParameterKey.Email : email,
             ParameterKey.Password : password
         ]
-        request(.POST, params: params, router: .SignUp) { data, error in
+        request(.POST, params: params, router: .SignUp, encoding: .JSON) { data, error in
             completion(error: error)
         }
     }
     
     static func signIn(email: String, password: String, completion: (error: NSError?) -> Void) {
         let headers = [HeaderKey.Email : email, HeaderKey.Password : password]
-        request(.POST, headers: headers, router: .SignIn) { data, error in
+        request(.POST, headers: headers, router: .SignIn, encoding: .JSON) { data, error in
             if error == nil {
                 SessionCode = data![ParameterKey.Session][ParameterKey.SessionCode].string!
             }
@@ -90,7 +97,7 @@ class Network {
             return
         }
         let headers = [HeaderKey.SessionCode : sessionCode]
-        request(.POST, headers: headers, router: .SignIn) { data, error in
+        request(.POST, headers: headers, router: .SignIn, encoding: .JSON) { data, error in
             if error == nil {
                 SessionCode = nil
             }
@@ -98,8 +105,16 @@ class Network {
         }
     }
     
-    private static func request(method: Alamofire.Method, headers: [String : String] = [:], params: [String : AnyObject] = [:], router: Router, completion: (data: JSON?, error: NSError?) -> Void) {
-        Alamofire.request(method, router, parameters: params, encoding: .JSON, headers: headers)
+    // MARK: - Users
+    
+    static func fetchUsers(completion: (users: [User]?, error: NSError?) -> Void) {
+        request(.GET, router: .FetchUsers, encoding: .URL) { data, error in
+            completion(users: data?[ParameterKey.Users].array?.map { User(json: $0) }, error: error)
+        }
+    }
+    
+    private static func request(method: Alamofire.Method, headers: [String : String] = [:], params: [String : AnyObject] = [:], router: Router, encoding: ParameterEncoding, completion: (data: JSON?, error: NSError?) -> Void) {
+        Alamofire.request(method, router, parameters: params, encoding: encoding, headers: headers)
             .responseJSON { response in
                 print()
                 print("**************************************** NEW \(method) REQUEST *************************************")

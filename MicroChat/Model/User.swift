@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class User {
     
     var name: String
     
-    init(data: [AnyObject]) {
-        name = ""
+    init(json: JSON) {
+        name = json[ParameterKey.Name].string!
     }
 }

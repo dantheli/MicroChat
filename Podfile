@@ -6,6 +6,7 @@ target 'MicroChat' do
     pod 'SlackTextViewController'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'OneSignal'
 end
 
 
