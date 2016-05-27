@@ -15,10 +15,7 @@ class Chat {
     var messages: [Message] = []
     
     init(json: JSON) {
-        fatalError("init(json:) not implemented")
-    }
-    init(name: String? = nil, users: [User]) {
-        self.name = name
-        self.users = users
+        name = json[ParameterKey.Name].string
+        users = json[ParameterKey.Users].array!.map { User(json: $0) }
     }
 }

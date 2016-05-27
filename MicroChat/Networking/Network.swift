@@ -16,17 +16,26 @@ enum Router: URLStringConvertible {
     
     case SignIn
     case SignUp
+    case SignOut
     case FetchUsers
+    case FetchChats
+    case MakeChat(Int)
     
     var URLString: String {
         let path: String = {
             switch self {
             case .SignIn:
                 return "/mchat/users/sign_in"
+            case .SignOut:
+                return "/mchat/users/sign_out"
             case .SignUp:
                 return "/mchat/users/sign_up"
             case .FetchUsers:
                 return "/mchat/users/index"
+            case .FetchChats:
+                return "/mchat/chats/index"
+            case .MakeChat(let userId):
+                return "/mchat/chats/make_chat/\(userId)"
             }
         }()
         return HostURL + path
@@ -47,6 +56,8 @@ struct ParameterKey {
     static let Password     = "password"
     
     static let Users        = "users"
+    
+    static let Chats        = "chats"
 }
 
 struct HeaderKey {
@@ -92,13 +103,8 @@ class Network {
     }
     
     static func signOut(completion: (error: NSError?) -> Void) {
-        guard let sessionCode = SessionCode else {
-            completion(error: nil)
-            print("***WARNING*** User was already signed out it seems. No session code was present.")
-            return
-        }
-        let headers = [HeaderKey.SessionCode : sessionCode]
-        request(.POST, headers: headers, router: .SignIn, encoding: .JSON) { data, error in
+        let headers = [HeaderKey.SessionCode : SessionCode!]
+        request(.POST, headers: headers, router: .SignOut, encoding: .JSON) { data, error in
             if error == nil {
                 SessionCode = nil
             }
@@ -111,6 +117,15 @@ class Network {
     static func fetchUsers(completion: (users: [User]?, error: NSError?) -> Void) {
         request(.GET, router: .FetchUsers, encoding: .URL) { data, error in
             completion(users: data?[ParameterKey.Users].array?.map { User(json: $0) }, error: error)
+        }
+    }
+    
+    // MARK: - Chats
+    
+    static func fetchChats(completion: (chats: [Chat]?, error: NSError?) -> Void) {
+        let headers = [HeaderKey.SessionCode : SessionCode!]
+        request(.GET, headers: headers, router: .FetchChats, encoding: .JSON) { data, error in
+            completion(chats: data?[ParameterKey.Chats].array?.map { Chat(json: $0) }, error: error)
         }
     }
     

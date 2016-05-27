@@ -14,8 +14,14 @@ class NewChatViewController: UIViewController {
     
     var users: [User] = []
     
+    var selectedIndexes: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "New Chat"
+        
+        navigationController?.setTheme()
         
         setupTableView()
         setupBarButtonItems()
@@ -29,6 +35,8 @@ class NewChatViewController: UIViewController {
         tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
         tableView.rowHeight = 52.0
+        
+        tableView.tableFooterView = UIView()
         
         view.addSubview(tableView)
     }
@@ -46,6 +54,7 @@ class NewChatViewController: UIViewController {
     }
     
     func addButtonPressed() {
+        let userIds = selectedIndexes.map { users[$0].id }
 //        dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -74,6 +83,25 @@ extension NewChatViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = users[indexPath.row].name
         cell.emailLabel.text = users[indexPath.row].email
         
+        if selectedIndexes.contains(indexPath.row) {
+            cell.accessoryType = .Checkmark
+            cell.nameLabel.textColor = UIColor.microPurple()
+        } else {
+            cell.accessoryType = .None
+            cell.nameLabel.textColor = UIColor.darkGrayColor()
+        }
+        
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if let previousIndex = selectedIndexes.indexOf(indexPath.row) {
+            selectedIndexes.removeAtIndex(previousIndex)
+        } else {
+            selectedIndexes.append(indexPath.row)
+        }
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
 }

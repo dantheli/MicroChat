@@ -10,10 +10,18 @@ import UIKit
 
 extension UIColor {
     static func navigationBar() -> UIColor {
-        return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return microPurple()
+    }
+    
+    static func microPink() -> UIColor {
+        return UIColor(red:0.86, green:0.52, blue:0.64, alpha:1.00)
     }
     
     static func microPurple() -> UIColor {
-        return UIColor.purpleColor()
+        return UIColor(red:0.65, green:0.45, blue:0.58, alpha:1.00)
+    }
+    
+    static func microDarkPurple() -> UIColor {
+        return UIColor(red:0.44, green:0.27, blue:0.35, alpha:1.00)
     }
 }

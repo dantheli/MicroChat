@@ -16,13 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+        window?.tintColor = UIColor.microPurple()
         let defaults = NSUserDefaults.standardUserDefaults()
         if defaults.stringForKey("SessionCode") != nil {
             presentMainApplication()
         } else {
-            window?.rootViewController = LoginViewController()
-            window?.makeKeyAndVisible()
+            presentLogin()
         }
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -30,19 +29,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCenter.addObserver(self, selector: #selector(userDidSignUp), name: UserDidSignUpNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(userDidSignOut), name: UserDidSignOutNotification, object: nil)
         
-        _ = OneSignal(launchOptions: launchOptions, appId: "xxx") { (message, additionalData, active) in
-            
-        }
+//        _ = OneSignal(launchOptions: launchOptions, appId: "xxx") { (message, additionalData, active) in
+//            
+//        }
+//        
+//        OneSignal.defaultClient().enableInAppAlertNotification(true)
         
-        OneSignal.defaultClient().enableInAppAlertNotification(true)
-        
+        window?.makeKeyAndVisible()
         return true
     }
     
     func presentMainApplication() {
         let chatsViewController = ChatsViewController()
         window?.rootViewController = UINavigationController(rootViewController: chatsViewController)
-        window?.makeKeyAndVisible()
+    }
+    
+    func presentLogin() {
+        window?.rootViewController = LoginViewController()
     }
     
     func userDidSignIn() {
@@ -54,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidSignOut() {
-        
+        presentLogin()
     }
 
     func applicationWillResignActive(application: UIApplication) {

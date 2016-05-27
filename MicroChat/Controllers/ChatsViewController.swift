@@ -17,12 +17,19 @@ class ChatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setTheme()
+        
         title = "Chats"
-        let chat = Chat(name: "Test", users: [])
-        chats.append(chat)
         
         setupTableView()
         setupBarButtons()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
     }
     
     func setupTableView() {
@@ -37,11 +44,21 @@ class ChatsViewController: UIViewController {
     func setupBarButtons() {
         let newChatButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(newChatButtonPressed))
         navigationItem.rightBarButtonItem = newChatButton
+        
+        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .Plain, target: self, action: #selector(signOutButtonPressed))
+        navigationItem.leftBarButtonItem = signOutButton
     }
     
     func newChatButtonPressed() {
         let navigationController = UINavigationController(rootViewController: NewChatViewController())
         presentViewController(navigationController, animated: true, completion: nil)
+    }
+    
+    func signOutButtonPressed() {
+        Network.signOut { error in
+            if let error = error { self.displayError(error, completion: nil); return }
+            NSNotificationCenter.defaultCenter().postNotificationName(UserDidSignOutNotification, object: nil)
+        }
     }
 }
 
