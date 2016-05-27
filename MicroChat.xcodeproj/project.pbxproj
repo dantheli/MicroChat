@@ -18,6 +18,8 @@
 		658C50E81CF77F7300336DF4 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50E71CF77F7300336DF4 /* ColorScheme.swift */; };
 		658C50EB1CF79FE200336DF4 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50EA1CF79FE200336DF4 /* Chat.swift */; };
 		658C50ED1CF7D0F500336DF4 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50EC1CF7D0F500336DF4 /* NewChatViewController.swift */; };
+		658C50F01CF7DEEA00336DF4 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C50EE1CF7DEEA00336DF4 /* ChatCell.swift */; };
+		658C50F11CF7DEEA00336DF4 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658C50EF1CF7DEEA00336DF4 /* ChatCell.xib */; };
 		659D45BB1CF6A46E0032C3C9 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */; };
 		659D45BE1CF6A5C00032C3C9 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D45BC1CF6A5C00032C3C9 /* UserCell.swift */; };
 		659D45BF1CF6A5C00032C3C9 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D45BD1CF6A5C00032C3C9 /* UserCell.xib */; };
@@ -43,6 +45,9 @@
 		658C50E71CF77F7300336DF4 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		658C50EA1CF79FE200336DF4 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		658C50EC1CF7D0F500336DF4 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
+		658C50EE1CF7DEEA00336DF4 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		658C50EF1CF7DEEA00336DF4 /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		658C50F21CF7DFA600336DF4 /* MicroChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MicroChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		659D45BA1CF6A46E0032C3C9 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		659D45BC1CF6A5C00032C3C9 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		659D45BD1CF6A5C00032C3C9 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -106,6 +111,7 @@
 				658C50E21CF77EEA00336DF4 /* Classes+Extensions.swift */,
 				658C50E71CF77F7300336DF4 /* ColorScheme.swift */,
 				658C50E51CF77F0F00336DF4 /* Constants.swift */,
+				658C50F21CF7DFA600336DF4 /* MicroChat-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -128,6 +134,8 @@
 				659D45C11CF6A5EF0032C3C9 /* MessageCell.xib */,
 				659D45BC1CF6A5C00032C3C9 /* UserCell.swift */,
 				659D45BD1CF6A5C00032C3C9 /* UserCell.xib */,
+				658C50EE1CF7DEEA00336DF4 /* ChatCell.swift */,
+				658C50EF1CF7DEEA00336DF4 /* ChatCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -217,6 +225,9 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = RNCTC44528;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -248,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				659D45D01CF6B82C0032C3C9 /* LoginViewController.xib in Resources */,
+				658C50F11CF7DEEA00336DF4 /* ChatCell.xib in Resources */,
 				654458A31CF5367400CA5F4C /* LaunchScreen.storyboard in Resources */,
 				659D45C31CF6A5EF0032C3C9 /* MessageCell.xib in Resources */,
 				654458A01CF5367400CA5F4C /* Assets.xcassets in Resources */,
@@ -318,6 +330,7 @@
 				658C50E81CF77F7300336DF4 /* ColorScheme.swift in Sources */,
 				659D45C21CF6A5EF0032C3C9 /* MessageCell.swift in Sources */,
 				658C50ED1CF7D0F500336DF4 /* NewChatViewController.swift in Sources */,
+				658C50F01CF7DEEA00336DF4 /* ChatCell.swift in Sources */,
 				659D45BE1CF6A5C00032C3C9 /* UserCell.swift in Sources */,
 				659D45CF1CF6B82C0032C3C9 /* LoginViewController.swift in Sources */,
 				658C50BD1CF774F300336DF4 /* Network.swift in Sources */,
@@ -435,6 +448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.microchat;
 				PRODUCT_NAME = MicroChat;
+				SWIFT_OBJC_BRIDGING_HEADER = "MicroChat/Supporting Files/MicroChat-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -448,6 +462,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dantheli.microchat;
 				PRODUCT_NAME = MicroChat;
+				SWIFT_OBJC_BRIDGING_HEADER = "MicroChat/Supporting Files/MicroChat-Bridging-Header.h";
 			};
 			name = Release;
 		};

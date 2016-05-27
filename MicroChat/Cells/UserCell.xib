@@ -8,28 +8,38 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="UserCell" customModule="MicroChat" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="52" id="KGk-i7-Jjw" customClass="UserCell" customModule="MicroChat" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLl-iX-hYo">
-                        <rect key="frame" x="16" y="11" width="72" height="21"/>
+                        <rect key="frame" x="16" y="8" width="72" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jd24@cornell.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udb-5z-kl1">
+                        <rect key="frame" x="16" y="27" width="106.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SLl-iX-hYo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="df8-MN-Yak"/>
+                    <constraint firstItem="udb-5z-kl1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="KDG-4l-46R"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="udb-5z-kl1" secondAttribute="bottom" id="Kga-tP-x8T"/>
+                    <constraint firstItem="SLl-iX-hYo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="dHK-Q8-yan"/>
                     <constraint firstItem="SLl-iX-hYo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="ybL-Nq-Vsc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="emailLabel" destination="udb-5z-kl1" id="jWU-EB-B97"/>
                 <outlet property="nameLabel" destination="SLl-iX-hYo" id="4Qw-Nk-vJ4"/>
             </connections>
+            <point key="canvasLocation" x="203" y="238"/>
         </tableViewCell>
     </objects>
 </document>

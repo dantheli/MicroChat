@@ -29,7 +29,7 @@ class ChatsViewController: UIViewController {
         tableView = UITableView(frame: view.frame, style: .Plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+        tableView.registerNib(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
         
         view.addSubview(tableView)
     }
@@ -56,7 +56,7 @@ extension ChatsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell", forIndexPath: indexPath) as! ChatCell
         
         return cell
     }

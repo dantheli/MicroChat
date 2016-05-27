@@ -41,6 +41,7 @@ struct ParameterKey {
     static let Session      = "session"
     static let SessionCode  = "session_code"
     
+    static let Id           = "id"
     static let Name         = "name"
     static let Email        = "email"
     static let Password     = "password"

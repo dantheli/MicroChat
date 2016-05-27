@@ -28,6 +28,8 @@ class NewChatViewController: UIViewController {
         tableView.delegate = self
         tableView.registerNib(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
         
+        tableView.rowHeight = 52.0
+        
         view.addSubview(tableView)
     }
     
@@ -51,6 +53,7 @@ class NewChatViewController: UIViewController {
         Network.fetchUsers { users, error in
             if let error = error { self.displayError(error, completion: nil) }
             self.users = users ?? []
+            self.tableView.reloadData()
         }
     }
     
@@ -67,7 +70,10 @@ extension NewChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
+        
         cell.nameLabel.text = users[indexPath.row].name
+        cell.emailLabel.text = users[indexPath.row].email
+        
         return cell
     }
 }

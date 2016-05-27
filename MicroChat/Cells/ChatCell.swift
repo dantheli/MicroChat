@@ -1,18 +1,15 @@
 //
-//  PersonCell.swift
+//  ChatCell.swift
 //  MicroChat
 //
-//  Created by Daniel Li on 5/25/16.
+//  Created by Daniel Li on 5/26/16.
 //  Copyright © 2016 dantheli. All rights reserved.
 //
 
 import UIKit
 
-class UserCell: UITableViewCell {
+class ChatCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

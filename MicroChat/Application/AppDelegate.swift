@@ -30,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationCenter.addObserver(self, selector: #selector(userDidSignUp), name: UserDidSignUpNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(userDidSignOut), name: UserDidSignOutNotification, object: nil)
         
+        _ = OneSignal(launchOptions: launchOptions, appId: "xxx") { (message, additionalData, active) in
+            
+        }
+        
+        OneSignal.defaultClient().enableInAppAlertNotification(true)
+        
         return true
     }
     
@@ -48,10 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidSignOut() {
-        
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
     }
 
