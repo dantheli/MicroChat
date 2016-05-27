@@ -52,7 +52,7 @@ class ChatViewController: SLKTextViewController {
             }
         }
         
-        socket.onAny { print("Got event: " + $0.event) }
+        socket.onAny { print("Got event: " + $0.event + "; with data: \($0.items)") }
         
         socket.connect()
 
@@ -75,17 +75,6 @@ class ChatViewController: SLKTextViewController {
     
     override func didPressRightButton(sender: AnyObject?) {
         socket.emit("chat", [textView.text])
-        
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let rowAnimation: UITableViewRowAnimation = self.inverted ? .Bottom : .Top
-        let scrollPosition: UITableViewScrollPosition = self.inverted ? .Bottom : .Top
-        
-        self.tableView.beginUpdates()
-        self.chat.messages.insert(Message(content: textView.text), atIndex: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: rowAnimation)
-        self.tableView.endUpdates()
-        
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: scrollPosition, animated: true)
         
         textView.text = ""
     }

@@ -15,11 +15,8 @@ class Message {
     
     init?(data: [AnyObject]) {
         if let dict = data.first as? NSDictionary,
-            message = dict["lol"] as? String {
-            content = message
-//        } else if let dict = data as? NSDictionary,
-//            message = dict["lol"] as? String {
-//            content = message
+            message = dict["lol"] as? [String] {
+            self.content = message.first!
         } else {
             return nil
         }
