@@ -23,6 +23,18 @@ class ChatsViewController: UIViewController {
         
         setupTableView()
         setupBarButtons()
+        fetchChats()
+    }
+    
+    func fetchChats() {
+        Network.fetchChats { chats, error in
+            if let error = error {
+                self.displayError(error, completion: nil)
+            } else {
+                self.chats = chats!
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

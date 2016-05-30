@@ -11,11 +11,11 @@ import SwiftyJSON
 
 class Chat {
     var name: String?
-    var users: [User]
+    var users: [User]?
     var messages: [Message] = []
     
     init(json: JSON) {
         name = json[ParameterKey.Name].string
-        users = json[ParameterKey.Users].array!.map { User(json: $0) }
+        users = json[ParameterKey.Users].array?.map { User(json: $0) }
     }
 }

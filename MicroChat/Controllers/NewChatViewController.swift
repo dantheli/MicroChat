@@ -55,7 +55,14 @@ class NewChatViewController: UIViewController {
     
     func addButtonPressed() {
         let userIds = selectedIndexes.map { users[$0].id }
-//        dismissViewControllerAnimated(true, completion: nil)
+        Network.newChat(userIds) { chat, error in
+            if let parent = (self.presentingViewController as? UINavigationController)?.topViewController as? ChatsViewController,
+                let chat = chat {
+                parent.chats.append(chat)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
     }
     
     func fetch() {
@@ -80,7 +87,7 @@ extension NewChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
         
-        cell.nameLabel.text = users[indexPath.row].name
+        cell.nameLabel.text = users[indexPath.row].fullName
         cell.emailLabel.text = users[indexPath.row].email
         
         if selectedIndexes.contains(indexPath.row) {

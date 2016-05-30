@@ -34,7 +34,7 @@ class ChatViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = chat.name ?? "Chat with \(chat.users.first!.name)"
+        title = "Chat"
         
         view.backgroundColor = UIColor.lightGrayColor()
         

@@ -12,11 +12,16 @@ import SwiftyJSON
 class User {
     
     var id: Int
-    var name: String
+    var firstName: String
+    var lastName: String
+    var fullName: String {
+        return firstName + " " + lastName
+    }
     var email: String
     
     init(json: JSON) {
-        name = json[ParameterKey.Name].string!
+        firstName = json[ParameterKey.FirstName].string!
+        lastName = json[ParameterKey.LastName].string!
         email = json[ParameterKey.Email].string!
         id = json[ParameterKey.Id].int!
     }

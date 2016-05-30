@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-let HostURL = "http://10.148.4.108:5000"
+let HostURL = "http://10.129.0.81:3000"
 
 enum Router: URLStringConvertible {
     
@@ -19,23 +19,23 @@ enum Router: URLStringConvertible {
     case SignOut
     case FetchUsers
     case FetchChats
-    case MakeChat(Int)
+    case NewChat
     
     var URLString: String {
         let path: String = {
             switch self {
             case .SignIn:
-                return "/mchat/users/sign_in"
+                return "/users/sign_in"
             case .SignOut:
-                return "/mchat/users/sign_out"
+                return "/users/sign_out"
             case .SignUp:
-                return "/mchat/users/sign_up"
+                return "/users/sign_up"
             case .FetchUsers:
-                return "/mchat/users/index"
+                return "/users/index"
             case .FetchChats:
-                return "/mchat/chats/index"
-            case .MakeChat(let userId):
-                return "/mchat/chats/make_chat/\(userId)"
+                return "/chats/index"
+            case .NewChat:
+                return "/chats/create"
             }
         }()
         return HostURL + path
@@ -43,25 +43,30 @@ enum Router: URLStringConvertible {
 }
 
 struct ParameterKey {
-    static let Success      = "success"
     static let Data         = "data"
-    static let Errors       = "errors"
     
     static let Session      = "session"
-    static let SessionCode  = "session_code"
+    static let SessionCode  = "sessionCode"
     
     static let Id           = "id"
-    static let Name         = "name"
+    static let FirstName    = "firstName"
+    static let LastName     = "lastName"
     static let Email        = "email"
     static let Password     = "password"
     
+    static let Name         = "name"
+    
     static let Users        = "users"
+    static let User         = "user"
     
     static let Chats        = "chats"
+    static let Chat         = "chat"
+    
+    static let Participants = "participants"
 }
 
 struct HeaderKey {
-    static let SessionCode  = "SessionCode"
+    static let SessionCode  = "session_code"
     static let Email        = "E"
     static let Password     = "P"
 }
@@ -81,11 +86,14 @@ class Network {
         }
     }
     
-    static func signUp(name: String, email: String, password: String, completion: (error: NSError?) -> Void) {
+    static func signUp(firstName: String, lastName: String, email: String, password: String, completion: (error: NSError?) -> Void) {
         let params = [
-            ParameterKey.Name : name,
-            ParameterKey.Email : email,
-            ParameterKey.Password : password
+            ParameterKey.User : [
+                ParameterKey.FirstName : firstName,
+                ParameterKey.LastName : lastName,
+                ParameterKey.Email : email,
+                ParameterKey.Password : password
+            ]
         ]
         request(.POST, params: params, router: .SignUp, encoding: .JSON) { data, error in
             completion(error: error)
@@ -96,7 +104,7 @@ class Network {
         let headers = [HeaderKey.Email : email, HeaderKey.Password : password]
         request(.POST, headers: headers, router: .SignIn, encoding: .JSON) { data, error in
             if error == nil {
-                SessionCode = data![ParameterKey.Session][ParameterKey.SessionCode].string!
+                SessionCode = data![ParameterKey.SessionCode].string!
             }
             completion(error: error)
         }
@@ -115,7 +123,8 @@ class Network {
     // MARK: - Users
     
     static func fetchUsers(completion: (users: [User]?, error: NSError?) -> Void) {
-        request(.GET, router: .FetchUsers, encoding: .URL) { data, error in
+        let headers = [HeaderKey.SessionCode : SessionCode!]
+        request(.GET, headers: headers, router: .FetchUsers, encoding: .URL) { data, error in
             completion(users: data?[ParameterKey.Users].array?.map { User(json: $0) }, error: error)
         }
     }
@@ -124,8 +133,20 @@ class Network {
     
     static func fetchChats(completion: (chats: [Chat]?, error: NSError?) -> Void) {
         let headers = [HeaderKey.SessionCode : SessionCode!]
-        request(.GET, headers: headers, router: .FetchChats, encoding: .JSON) { data, error in
+        request(.GET, headers: headers, router: .FetchChats, encoding: .URL) { data, error in
             completion(chats: data?[ParameterKey.Chats].array?.map { Chat(json: $0) }, error: error)
+        }
+    }
+    
+    static func newChat(userIds: [Int], completion: (chat: Chat?, error: NSError?) -> Void) {
+        let headers = [HeaderKey.SessionCode : SessionCode!]
+        let parameters = [ParameterKey.Participants : userIds]
+        request(.POST, headers: headers, params: parameters, router: .NewChat, encoding: .JSON) { data, error in
+            var chat: Chat? = nil
+            if error != nil {
+                chat = Chat(json: data![ParameterKey.Data][ParameterKey.Chat])
+            }
+            completion(chat: chat, error: error)
         }
     }
     
@@ -154,13 +175,8 @@ class Network {
                 print()
                 print(json)
                 
-                if json[ParameterKey.Success].bool! {
-                    completion(data: json[ParameterKey.Data], error: nil)
-                } else {
-                    let error = json[ParameterKey.Data][ParameterKey.Errors].array?.first?.string
-                    completion(data: nil, error: NSError(domain: "MicroChatDomain", code: -999999, userInfo: [kCFErrorLocalizedDescriptionKey : error ?? "Unknown Error"]))
-                }
-        }
+                completion(data: json[ParameterKey.Data], error: nil)
+            }
     }
     
 }

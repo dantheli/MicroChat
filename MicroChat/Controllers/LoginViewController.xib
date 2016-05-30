@@ -9,8 +9,10 @@
             <connections>
                 <outlet property="emailField" destination="vOs-bW-iLv" id="WSc-gC-SJ3"/>
                 <outlet property="enterButton" destination="r0f-XL-q6a" id="f6f-OS-hc7"/>
-                <outlet property="nameField" destination="tfo-OZ-KOH" id="UoF-bM-ZM3"/>
-                <outlet property="nameFieldHeight" destination="oPY-46-pZk" id="Dtk-Mv-bkh"/>
+                <outlet property="firstNameField" destination="tfo-OZ-KOH" id="ndk-AU-HEC"/>
+                <outlet property="firstNameFieldHeight" destination="oPY-46-pZk" id="Yoc-DG-rh1"/>
+                <outlet property="lastNameField" destination="kTG-Ni-Mg7" id="wjS-Ia-AJz"/>
+                <outlet property="lastNameFieldHeight" destination="x59-x8-smx" id="ild-Lf-7xP"/>
                 <outlet property="passwordField" destination="cO1-fL-n9c" id="8cn-1r-hta"/>
                 <outlet property="switchButton" destination="RLC-36-q5H" id="0IZ-wG-ZFk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,51 +23,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S" userLabel="Fields Container">
-                    <rect key="frame" x="0.0" y="96" width="320" height="136"/>
-                    <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-fL-n9c">
-                            <rect key="frame" x="16" y="91" width="288" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="Yh9-2t-V9H"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfo-OZ-KOH">
-                            <rect key="frame" x="16" y="1" width="288" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="oPY-46-pZk"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
-                        </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-bW-iLv">
-                            <rect key="frame" x="16" y="46" width="288" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="9yo-5i-hPJ"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" red="0.65098039220000004" green="0.4549019608" blue="0.58431372550000005" alpha="0.10261524822695035" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstItem="vOs-bW-iLv" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="3Do-pN-QFd"/>
-                        <constraint firstAttribute="trailing" secondItem="cO1-fL-n9c" secondAttribute="trailing" constant="16" id="4Km-gc-fLm"/>
-                        <constraint firstItem="vOs-bW-iLv" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="J6o-gp-jrL"/>
-                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="LOe-80-M7C"/>
-                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="Lkd-hQ-DxB"/>
-                        <constraint firstAttribute="bottom" secondItem="cO1-fL-n9c" secondAttribute="bottom" constant="1" id="OKu-jh-DuX"/>
-                        <constraint firstAttribute="trailing" secondItem="vOs-bW-iLv" secondAttribute="trailing" constant="16" id="R2e-VQ-Lfq"/>
-                        <constraint firstAttribute="trailing" secondItem="tfo-OZ-KOH" secondAttribute="trailing" constant="16" id="h0P-3a-EV4"/>
-                        <constraint firstItem="vOs-bW-iLv" firstAttribute="top" secondItem="tfo-OZ-KOH" secondAttribute="bottom" constant="1" id="ibJ-N9-EcI"/>
-                        <constraint firstItem="cO1-fL-n9c" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="mUR-En-ABS"/>
-                        <constraint firstItem="cO1-fL-n9c" firstAttribute="centerX" secondItem="02V-uC-E8S" secondAttribute="centerX" id="tkW-VN-EDr"/>
-                        <constraint firstItem="cO1-fL-n9c" firstAttribute="top" secondItem="vOs-bW-iLv" secondAttribute="bottom" constant="1" id="u2O-1u-STL"/>
-                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="top" secondItem="02V-uC-E8S" secondAttribute="top" constant="1" id="x3Y-Yf-Tcn"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MICRO_CHAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-J8-drO">
                     <rect key="frame" x="76" y="30" width="169" height="44"/>
                     <constraints>
@@ -76,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0f-XL-q6a">
-                    <rect key="frame" x="123" y="248" width="74" height="44"/>
+                    <rect key="frame" x="123" y="293" width="74" height="44"/>
                     <color key="backgroundColor" red="0.65098039220000004" green="0.4549019608" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="R6a-zQ-hqz"/>
@@ -90,7 +47,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-36-q5H">
-                    <rect key="frame" x="0.0" y="308" width="320" height="30"/>
+                    <rect key="frame" x="0.0" y="353" width="320" height="30"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                     <color key="tintColor" red="0.65098039220000004" green="0.4549019608" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="switch"/>
@@ -98,6 +55,59 @@
                         <action selector="switchButtonPressed:" destination="-1" eventType="touchUpInside" id="kfo-85-N4w"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uC-E8S" userLabel="Fields Container">
+                    <rect key="frame" x="0.0" y="96" width="320" height="181"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cO1-fL-n9c">
+                            <rect key="frame" x="16" y="136" width="288" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Yh9-2t-V9H"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfo-OZ-KOH">
+                            <rect key="frame" x="16" y="1" width="288" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="oPY-46-pZk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTG-Ni-Mg7">
+                            <rect key="frame" x="16" y="46" width="288" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="x59-x8-smx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vOs-bW-iLv">
+                            <rect key="frame" x="16" y="91" width="288" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="9yo-5i-hPJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.65098039220000004" green="0.4549019608" blue="0.58431372550000005" alpha="0.10261524822695035" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="vOs-bW-iLv" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="3Do-pN-QFd"/>
+                        <constraint firstAttribute="trailing" secondItem="cO1-fL-n9c" secondAttribute="trailing" constant="16" id="4Km-gc-fLm"/>
+                        <constraint firstAttribute="trailing" secondItem="kTG-Ni-Mg7" secondAttribute="trailing" constant="16" id="FTb-x5-ZeK"/>
+                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="LOe-80-M7C"/>
+                        <constraint firstAttribute="bottom" secondItem="cO1-fL-n9c" secondAttribute="bottom" constant="1" id="OKu-jh-DuX"/>
+                        <constraint firstAttribute="trailing" secondItem="vOs-bW-iLv" secondAttribute="trailing" constant="16" id="R2e-VQ-Lfq"/>
+                        <constraint firstItem="vOs-bW-iLv" firstAttribute="top" secondItem="kTG-Ni-Mg7" secondAttribute="bottom" constant="1" id="Rat-IB-C3G"/>
+                        <constraint firstAttribute="trailing" secondItem="tfo-OZ-KOH" secondAttribute="trailing" constant="16" id="h0P-3a-EV4"/>
+                        <constraint firstItem="cO1-fL-n9c" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="mUR-En-ABS"/>
+                        <constraint firstItem="cO1-fL-n9c" firstAttribute="top" secondItem="vOs-bW-iLv" secondAttribute="bottom" constant="1" id="u2O-1u-STL"/>
+                        <constraint firstItem="kTG-Ni-Mg7" firstAttribute="leading" secondItem="02V-uC-E8S" secondAttribute="leading" constant="16" id="vFH-9R-df3"/>
+                        <constraint firstItem="kTG-Ni-Mg7" firstAttribute="top" secondItem="tfo-OZ-KOH" secondAttribute="bottom" constant="1" id="wG5-Q9-kWU"/>
+                        <constraint firstItem="tfo-OZ-KOH" firstAttribute="top" secondItem="02V-uC-E8S" secondAttribute="top" constant="1" id="x3Y-Yf-Tcn"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

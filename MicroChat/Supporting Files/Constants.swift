@@ -17,5 +17,4 @@ let UITableViewCellFadeDelay: NSTimeInterval = 0.1
 
 // MARK: - Notifications
 let UserDidSignInNotification = "UserDidSignIn"
-let UserDidSignUpNotification = "UserDidSignUp"
 let UserDidSignOutNotification = "UserDidSignOut"
